@@ -31,9 +31,11 @@ sap.ui.jsview("project.views.project_main", {
       contentRight: [button]
     })
 
+    var table = new sap.m.Table({})
+
     var splitapp = new sap.m.SplitApp({});
     splitapp.addMasterPage(list);
-    splitapp.addDetailPage(bar);
+    splitapp.addDetailPage(bar, table);
 
 
 
