@@ -12,17 +12,22 @@ sap.ui.jsview("project.views.project_main", {
     // var item = new sap.m.ObjectListItem({
     //   title: "Test"
     // });
+
+    var itemContainer = new sap.m.VBox();
     
     var subitem = new sap.m.Label({
-      text: "Item,"
+      text: "Item"
     })
 
     var subitem1 = new sap.m.Label({
       text: " Item1"
     })
 
+    itemContainer.addItem(subitem);
+    itemContainer.addItem(subitem1);
+
     var item = new sap.m.CustomListItem({
-      content: [subitem, subitem1]
+      content: [itemContainer]
     });
 
     var list = new sap.m.List({
@@ -34,6 +39,7 @@ sap.ui.jsview("project.views.project_main", {
     }) 
 
     var button = new sap.m.Button({
+      icon: "sap-icon://donut-chart",
       text: "Button"
     })
 
