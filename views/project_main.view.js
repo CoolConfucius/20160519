@@ -39,7 +39,7 @@ sap.ui.jsview("project.views.project_main", {
     }) 
 
     var button = new sap.m.Button({
-      icon: "sap-icon://donut-chart",
+      icon: "sap-icon://home",
       text: "Button"
     })
 
