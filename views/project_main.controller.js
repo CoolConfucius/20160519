@@ -36,8 +36,8 @@ sap.ui.controller("project.views.project_main", {
   onInit: function() {
     console.log("on init main controller");
     this.app = sap.ui.getCore().byId("project-app");
-    this.paginationrender();
-    console.log(obj);
+    // this.paginationrender();
+    // console.log(obj);
     that = this; 
   },
 
