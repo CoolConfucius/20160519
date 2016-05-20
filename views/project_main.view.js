@@ -31,11 +31,26 @@ sap.ui.jsview("project.views.project_main", {
       contentRight: [button]
     })
 
-    var table = new sap.m.Table({})
+    var column = new sap.m.Column({
+      header: new sap.m.Label({
+        text: "Label"
+      })
+    })
+
+    var table = new sap.m.Table({
+      columns: [column]
+    })
 
     var splitapp = new sap.m.SplitApp({});
     splitapp.addMasterPage(list);
-    splitapp.addDetailPage(bar, table);
+    // splitapp.addDetailPage(bar);
+    // splitapp.addDetailPage(table);
+    // splitapp.addDetailPage([bar, table]]);
+
+    var detailpage = new sap.m.Page({
+      content: [bar, table]
+    })
+    splitapp.addDetailPage(detailpage); 
 
 
 
