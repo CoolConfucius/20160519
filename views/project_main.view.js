@@ -43,9 +43,6 @@ sap.ui.jsview("project.views.project_main", {
 
     var splitapp = new sap.m.SplitApp({});
     splitapp.addMasterPage(list);
-    // splitapp.addDetailPage(bar);
-    // splitapp.addDetailPage(table);
-    // splitapp.addDetailPage([bar, table]]);
 
     var detailpage = new sap.m.Page({
       content: [bar, table]
