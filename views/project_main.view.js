@@ -9,8 +9,20 @@ sap.ui.jsview("project.views.project_main", {
 
     this.setHeight("100%"); 
 
-    var item = new sap.m.ListItemBase({
-      text: "Test"
+    // var item = new sap.m.ObjectListItem({
+    //   title: "Test"
+    // });
+    
+    var subitem = new sap.m.Label({
+      text: "Item"
+    })
+
+    var subitem1 = new sap.m.Label({
+      text: "Item1"
+    })
+
+    var item = new sap.m.CustomListItem({
+      content: [subitem, subitem1]
     });
 
     var list = new sap.m.List({
