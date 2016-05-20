@@ -65,14 +65,23 @@ sap.ui.controller("project.views.project_main", {
         
         that.dataarray = data; 
         console.log(that.dataarray);
-        var name = new sap.m.Label({
-          text: data[0].name
-        })
-        var email = new sap.m.Label({
-          text: data[0].email
-        })
+        
+        var itemContainer = new sap.m.VBox();
+        
+        for (var i = 0; i < data.length; i++) {
+          var name = new sap.m.Label({
+            text: data[i].name
+          })
+          var email = new sap.m.Label({
+            text: data[i].email
+          })
+
+          itemContainer.addItem(name);
+          itemContainer.addItem(email);
+        };
+
         var $item = new sap.m.CustomListItem({
-          content: [name, email]
+          content: itemContainer
         })
         that.list.addItem($item); 
       }, 
