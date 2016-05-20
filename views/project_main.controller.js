@@ -66,9 +66,9 @@ sap.ui.controller("project.views.project_main", {
         that.dataarray = data; 
         console.log(that.dataarray);
         
-        var itemContainer = new sap.m.VBox();
         
         for (var i = 0; i < data.length; i++) {
+          var itemContainer = new sap.m.VBox();
           var name = new sap.m.Label({
             text: data[i].name
           })
@@ -78,12 +78,13 @@ sap.ui.controller("project.views.project_main", {
 
           itemContainer.addItem(name);
           itemContainer.addItem(email);
+
+          var $item = new sap.m.CustomListItem({
+            content: itemContainer
+          })
+          that.list.addItem($item); 
         };
 
-        var $item = new sap.m.CustomListItem({
-          content: itemContainer
-        })
-        that.list.addItem($item); 
       }, 
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         sap.m.MessageToast.show("Error: "+XMLHttpRequest.responseText);
