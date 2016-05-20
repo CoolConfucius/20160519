@@ -18,9 +18,9 @@ sap.ui.jsview("project.views.project_main", {
       items: [item]
     }); 
 
-    var label = new sap.m.Label = {
+    var label = new sap.m.Label({
       text: "Label"
-    }
+    }) 
 
     var button = new sap.m.Button({
       text: "Button"
