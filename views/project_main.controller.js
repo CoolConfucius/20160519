@@ -50,6 +50,9 @@ sap.ui.controller("project.views.project_main", {
 
   }, 
 
+  dataarray:[],
+  olistModel: new sap.ui.model.json.JSONModel(),
+
   fetchdata: function() {
     var that = this; 
     var url = "http://localhost:3000/example.json"
@@ -57,10 +60,21 @@ sap.ui.controller("project.views.project_main", {
       url: url,
       type: "GET",
       cache: false, 
-      //headers: {"X-Csrf-token" : sessionStorage.getItem("CSRF-Token")},
       dataType: "json",
       success: function(data) {
-        console.log(data);
+        
+        that.dataarray = data; 
+        console.log(that.dataarray);
+        var name = new sap.m.Label({
+          text: data[0].name
+        })
+        var email = new sap.m.Label({
+          text: data[0].email
+        })
+        var $item = new sap.m.CustomListItem({
+          content: [name, email]
+        })
+        that.list.addItem($item); 
       }, 
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         sap.m.MessageToast.show("Error: "+XMLHttpRequest.responseText);

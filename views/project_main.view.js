@@ -33,6 +33,7 @@ sap.ui.jsview("project.views.project_main", {
     var list = new sap.m.List({
       items: [item]
     }); 
+    oController.list = list; 
 
     var label = new sap.m.Label({
       text: "Label"
