@@ -39,6 +39,7 @@ sap.ui.controller("project.views.project_main", {
     // this.paginationrender();
     // console.log(obj);
     that = this; 
+    this.fetchdata(); 
   },
 
   // _handleRouteMatched:function(evt){
@@ -48,6 +49,24 @@ sap.ui.controller("project.views.project_main", {
   onAfterRendering: function() {
 
   }, 
+
+  fetchdata: function() {
+    var that = this; 
+    var url = "http://localhost:8888/example.json"
+    $.ajax({
+      url: url,
+      type: "GET",
+      cache: false, 
+      headers: {"X-Csrf-token" : sessionStorage.getItem("CSRF-Token")},
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+      }, 
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        sap.m.MessageToast.show("Error: "+XMLHttpRequest.responseText);
+      }
+    })
+  },
 
   display: function() {
     this.contentTable.removeAllColumns(); 
