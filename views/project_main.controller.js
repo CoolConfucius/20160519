@@ -52,12 +52,12 @@ sap.ui.controller("project.views.project_main", {
 
   fetchdata: function() {
     var that = this; 
-    var url = "http://localhost:8888/example.json"
+    var url = "http://localhost:3000/example.json"
     $.ajax({
       url: url,
       type: "GET",
       cache: false, 
-      headers: {"X-Csrf-token" : sessionStorage.getItem("CSRF-Token")},
+      //headers: {"X-Csrf-token" : sessionStorage.getItem("CSRF-Token")},
       dataType: "json",
       success: function(data) {
         console.log(data);
