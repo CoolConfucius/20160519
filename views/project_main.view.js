@@ -14,11 +14,11 @@ sap.ui.jsview("project.views.project_main", {
     // });
     
     var subitem = new sap.m.Label({
-      text: "Item"
+      text: "Item,"
     })
 
     var subitem1 = new sap.m.Label({
-      text: "Item1"
+      text: " Item1"
     })
 
     var item = new sap.m.CustomListItem({
