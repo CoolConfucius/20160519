@@ -14,17 +14,13 @@ sap.ui.jsview("project.views.project_main", {
     // });
 
   
-    var subitem = new sap.m.Label({
+    var name = new sap.m.Label({
       text: "{name}"
     })
 
-    var subitem1 = new sap.m.Label({
+    var email = new sap.m.Label({
       text: "{email}"
     });
-
-    // var company = new sap.m.Label({
-    //   text: "{company}"
-    // });
 
     var company = new sap.m.Label({
       text: {
@@ -36,7 +32,7 @@ sap.ui.jsview("project.views.project_main", {
     });
 
     var itemContainer = new sap.m.VBox({
-      items: [subitem, subitem1, company]
+      items: [name, email, company]
     });
 
     var item = new sap.m.CustomListItem({
@@ -65,13 +61,15 @@ sap.ui.jsview("project.views.project_main", {
 
     var column = new sap.m.Column({
       header: new sap.m.Label({
-        text: "Label"
+        text: "{name}"
       })
     })
 
     var table = new sap.m.Table({
-      columns: [column]
+      // columns: [column]
     })
+    table.bindAggregation("columns", "/", column);
+    oController.table = table; 
 
     var splitapp = new sap.m.SplitApp({});
     

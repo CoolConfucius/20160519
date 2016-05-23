@@ -52,6 +52,7 @@ sap.ui.controller("project.views.project_main", {
 
   dataarray:[],
   olistModel: new sap.ui.model.json.JSONModel(),
+  otableModel: new sap.ui.model.json.JSONModel(),
 
   fetchdata: function() {
     var that = this; 
@@ -85,6 +86,7 @@ sap.ui.controller("project.views.project_main", {
         //   that.list.addItem($item); 
         // };
         that.olistModel.setData(that.dataarray);
+        that.otableModel.setData(that.dataarray);
         that.getView().setModel(that.olistModel);
 
       }, 
