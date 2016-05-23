@@ -67,23 +67,25 @@ sap.ui.controller("project.views.project_main", {
         console.log(that.dataarray);
         
         
-        for (var i = 0; i < data.length; i++) {
-          var itemContainer = new sap.m.VBox();
-          var name = new sap.m.Label({
-            text: data[i].name
-          })
-          var email = new sap.m.Label({
-            text: data[i].email
-          })
+        // for (var i = 0; i < data.length; i++) {
+        //   var itemContainer = new sap.m.VBox();
+        //   var name = new sap.m.Label({
+        //     text: data[i].name
+        //   })
+        //   var email = new sap.m.Label({
+        //     text: data[i].email
+        //   })
 
-          itemContainer.addItem(name);
-          itemContainer.addItem(email);
+        //   itemContainer.addItem(name);
+        //   itemContainer.addItem(email);
 
-          var $item = new sap.m.CustomListItem({
-            content: itemContainer
-          })
-          that.list.addItem($item); 
-        };
+        //   var $item = new sap.m.CustomListItem({
+        //     content: itemContainer
+        //   })
+        //   that.list.addItem($item); 
+        // };
+        that.olistModel.setData(that.dataarray);
+        that.getView().setModel(that.olistModel);
 
       }, 
       error: function(XMLHttpRequest, textStatus, errorThrown) {

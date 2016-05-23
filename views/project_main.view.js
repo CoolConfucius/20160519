@@ -13,26 +13,40 @@ sap.ui.jsview("project.views.project_main", {
     //   title: "Test"
     // });
 
-    var itemContainer = new sap.m.VBox();
-    
+  
     var subitem = new sap.m.Label({
-      text: "Item"
+      text: "{name}"
     })
 
     var subitem1 = new sap.m.Label({
-      text: " Item1"
-    })
+      text: "{email}"
+    });
 
-    itemContainer.addItem(subitem);
-    itemContainer.addItem(subitem1);
+    // var company = new sap.m.Label({
+    //   text: "{company}"
+    // });
+
+    var company = new sap.m.Label({
+      text: {
+        path: "company",
+        formatter: function(company) {
+          return "Works at: " + company;
+        }
+      }
+    });
+
+    var itemContainer = new sap.m.VBox({
+      items: [subitem, subitem1, company]
+    });
 
     var item = new sap.m.CustomListItem({
       content: [itemContainer]
     });
 
     var list = new sap.m.List({
-      items: [item]
     }); 
+    //list.setModel(oController.olistModel);
+    list.bindAggregation("items", "/", item);
     oController.list = list; 
 
     var label = new sap.m.Label({
