@@ -86,8 +86,8 @@ sap.ui.controller("project.views.project_main", {
         //   that.list.addItem($item); 
         // };
         that.olistModel.setData(that.dataarray);
-        that.otableModel.setData(that.dataarray);
-        that.getView().setModel(that.olistModel);
+        // that.otableModel.setData(that.dataarray);
+        //that.getView().setModel(that.olistModel);
 
       }, 
       error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -135,7 +135,15 @@ sap.ui.controller("project.views.project_main", {
     currentpage = btnnum; 
     console.log(currentpage); 
     // this.oParent.display(); 
-    that.display(); 
-    console.log(this.oParent);
+    // that.display(); 
+    // console.log(this.oParent);
+  },
+
+  selectFirstItem(event) {
+    var that = this;
+    var item = that.list.getItems()[0];
+    var context = item.getBindingContext();
+     console.log(context);
+    that.detailpage.setBindingContext(context);
   }
 })

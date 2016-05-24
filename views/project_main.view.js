@@ -40,8 +40,11 @@ sap.ui.jsview("project.views.project_main", {
     });
 
     var list = new sap.m.List({
+      updateFinished: function(e) {
+        oController.selectFirstItem(e);
+      }
     }); 
-    //list.setModel(oController.olistModel);
+    list.setModel(oController.olistModel);
     list.bindAggregation("items", "/", item);
     oController.list = list; 
 
@@ -59,16 +62,35 @@ sap.ui.jsview("project.views.project_main", {
       contentRight: [button]
     })
 
-    var column = new sap.m.Column({
-      header: new sap.m.Label({
-        text: "{name}"
-      })
-    })
 
     var table = new sap.m.Table({
-      // columns: [column]
-    })
-    table.bindAggregation("columns", "/", column);
+      columns: [
+        new sap.m.Column({
+          header: new sap.m.Label({
+            text: "Name"
+          })
+        }),
+        new sap.m.Column({
+          header: new sap.m.Label({
+            text: "Email"
+          })
+        })
+        ]
+    });
+
+    var oCellTemplate = new sap.m.ColumnListItem({
+      cells: [
+        new sap.m.Label({
+          text: "{name}"
+        }),
+        new sap.m.Label({
+          text: "{email}"
+        })
+      ]
+    });
+
+
+    table.bindAggregation("items", "/", oCellTemplate);
     oController.table = table; 
 
     var splitapp = new sap.m.SplitApp({});
@@ -81,6 +103,7 @@ sap.ui.jsview("project.views.project_main", {
     var detailpage = new sap.m.Page({
       content: [bar, table]
     })
+    oController.detailpage = detailpage;
     splitapp.addDetailPage(detailpage); 
 
     return splitapp; 
