@@ -36,9 +36,7 @@ sap.ui.controller("project.views.project_main", {
   onInit: function() {
     console.log("on init main controller");
     this.app = sap.ui.getCore().byId("project-app");
-    // this.paginationrender();
-    // console.log(obj);
-    that = this; 
+    this.list.attachItemPress(this.listSelection, this);
     this.fetchdata(); 
   },
 
@@ -51,6 +49,7 @@ sap.ui.controller("project.views.project_main", {
   }, 
 
   dataarray:[],
+  tablearray:[],
   olistModel: new sap.ui.model.json.JSONModel(),
   otableModel: new sap.ui.model.json.JSONModel(),
 
@@ -87,7 +86,7 @@ sap.ui.controller("project.views.project_main", {
         // };
         that.olistModel.setData(that.dataarray);
         // that.otableModel.setData(that.dataarray);
-        //that.getView().setModel(that.olistModel);
+        that.list.setModel(that.olistModel);
 
       }, 
       error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -139,11 +138,23 @@ sap.ui.controller("project.views.project_main", {
     // console.log(this.oParent);
   },
 
-  selectFirstItem(event) {
-    var that = this;
-    var item = that.list.getItems()[0];
+  selectFirstItem: function(event) {
+    var item = this.list.getItems()[0];
+    this.list.setSelectedItem(item, true);
+    this.setTableArray(item);
+    
+  },
+
+  listSelection: function(event) {
+    var item = event.getParameter("listItem");
+    this.setTableArray(item);
+  },
+
+  setTableArray: function(item) {
+    this.tablearray = [];
     var context = item.getBindingContext();
-     console.log(context);
-    that.detailpage.setBindingContext(context);
+    this.tablearray.push(context.getObject())
+    this.otableModel.setData(this.tablearray);
+    this.table.setModel(this.otableModel);
   }
 })

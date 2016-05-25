@@ -36,7 +36,8 @@ sap.ui.jsview("project.views.project_main", {
     });
 
     var item = new sap.m.CustomListItem({
-      content: [itemContainer]
+      content: [itemContainer],
+      type: 'Active'
     });
 
     var list = new sap.m.List({
@@ -44,7 +45,7 @@ sap.ui.jsview("project.views.project_main", {
         oController.selectFirstItem(e);
       }
     }); 
-    list.setModel(oController.olistModel);
+    //list.setModel(oController.olistModel);
     list.bindAggregation("items", "/", item);
     oController.list = list; 
 
@@ -74,6 +75,16 @@ sap.ui.jsview("project.views.project_main", {
           header: new sap.m.Label({
             text: "Email"
           })
+        }),
+        new sap.m.Column({
+          header: new sap.m.Label({
+            text: "Age"
+          })
+        }),
+        new sap.m.Column({
+          header: new sap.m.Label({
+            text: "Eye Color"
+          })
         })
         ]
     });
@@ -85,9 +96,16 @@ sap.ui.jsview("project.views.project_main", {
         }),
         new sap.m.Label({
           text: "{email}"
+        }),
+        new sap.m.Label({
+          text: "{age}"
+        }),
+        new sap.m.Label({
+          text: "{eyeColor}"
         })
       ]
     });
+    oController.oCellTemplate = oCellTemplate;
 
 
     table.bindAggregation("items", "/", oCellTemplate);
