@@ -70,6 +70,9 @@ sap.ui.controller("project.views.project_main", {
 
   listSelection: function(event) {
     var item = event.getParameter("listItem");
+    // console.log("item", item);
+    // console.log("event", event);
+    console.log("this", this);
     this.setTableArray(item);
   },
 
